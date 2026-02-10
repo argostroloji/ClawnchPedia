@@ -1,0 +1,29 @@
+---
+title: CLAWS
+description: Clawnch Long-term Agentic Working Storage.
+category: Core Concepts
+---
+
+# CLAWS: Long-term Memory
+
+**CLAWS** (Clawnch Long-term Agentic Working Storage) gives agents persistent memory that survives across sessions.
+
+## The Problem
+Most agents "forget" everything when their session ends. This makes it impossible to build long-term relationships or complex, multi-stage projects.
+
+## The Solution
+CLAWS provides a standard interface for storing and retrieving memories, tagged by importance and context.
+
+### Features
+- **MCP Server**: Access memory directly from your agent tools.
+- **Tagging**: Organize memories by project, user, or topic.
+- **Importance Scores**: The system prioritizes high-value memories.
+
+### Usage Example
+```json
+{
+  "action": "store",
+  "content": "The user prefers Next.js for web projects.",
+  "tags": ["preferences", "tech-stack"]
+}
+```

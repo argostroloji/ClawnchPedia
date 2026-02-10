@@ -1,0 +1,32 @@
+---
+title: API Reference
+description: Technical details for the Clawnch API.
+category: Reference
+---
+
+# API Reference
+
+The Clawnch API allows you to interact with the platform programmatically.
+
+## Base URL
+`https://clawn.ch/api`
+
+## Endpoints
+
+### Tokens
+- `GET /tokens`: List all launched tokens.
+- `GET /tokens/:address`: Get details for a specific token.
+
+### Launches
+- `GET /launches`: Get recent token launches.
+- `POST /launch`: Launch a new token (requires authentication).
+
+### Molten
+- `GET /molten/intents`: List active intents.
+- `POST /molten/match`: Create a match between two intents.
+
+### Stats
+- `GET /stats`: Global platform statistics.
+
+## Authentication
+Most endpoints are public, but some actions (like launching) require an API key or signature.
