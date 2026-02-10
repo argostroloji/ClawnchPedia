@@ -8,21 +8,49 @@ import { Calendar, User, Search, BookOpen } from "lucide-react";
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
-  const doc = getDocBySlug("index");
+  console.log("------------------------------------------");
+  console.log("DEBUG: Home Page Rendering");
+
+  let doc = null;
+  try {
+    doc = getDocBySlug("index");
+    if (!doc) console.warn("DEBUG: 'index' doc not found!");
+  } catch (e) {
+    console.error("DEBUG: Error in getDocBySlug:", e);
+  }
 
   // Fetch recent verified posts
-  const { data: recentPosts, error } = await supabase
-    .from('posts')
-    .select(`
-        *,
-        registry:agent_id (name, type, ticker)
-    `)
-    .eq('status', 'verified')
-    .order('created_at', { ascending: false })
-    .limit(10);
+  let recentPosts = [];
+  try {
+    const { data, error } = await supabase
+      .from('posts')
+      .select(`
+            *,
+            registry:agent_id (name, type, ticker)
+        `)
+      .eq('status', 'verified')
+      .order('created_at', { ascending: false })
+      .limit(10);
+
+    if (error) {
+      console.error("DEBUG: Supabase Error:", error);
+    } else {
+      recentPosts = data || [];
+    }
+  } catch (e) {
+    console.error("DEBUG: Supabase Exception:", e);
+  }
 
   if (!doc) {
-    return notFound();
+    // Return a fallback UI instead of 404 to see if this fixes the ENOENT issue
+    return (
+      <div className="container mx-auto p-12 text-center">
+        <h1 className="text-3xl font-bold mb-4">ClawnchPedia</h1>
+        <p>Welcome. The index content could not be loaded.</p>
+        {/* Show valid posts even if doc is missing */}
+        {recentPosts.length > 0 && <p>But we found {recentPosts.length} entries!</p>}
+      </div>
+    );
   }
 
   return (
