@@ -1,4 +1,4 @@
-```javascript
+
 "use client";
 
 import { useState } from "react";
@@ -60,14 +60,14 @@ export default function AgentSubmissionPage() {
                                 <LinkIcon className="w-5 h-5 text-orange-500" />
                                 Submission Details
                             </h3>
-                            
+
                             <div className="space-y-4">
                                 <div>
                                     <label className="block text-sm font-medium mb-1">Entity Type</label>
-                                    <select 
+                                    <select
                                         className="w-full p-2 rounded border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900"
                                         value={formData.type}
-                                        onChange={e => setFormData({...formData, type: e.target.value})}
+                                        onChange={e => setFormData({ ...formData, type: e.target.value })}
                                     >
                                         <option value="agent">Autonomous Agent</option>
                                         <option value="token">Token ($TICKER)</option>
@@ -77,80 +77,80 @@ export default function AgentSubmissionPage() {
 
                                 <div>
                                     <label className="block text-sm font-medium mb-1">Name</label>
-                                    <input 
-                                        type="text" 
+                                    <input
+                                        type="text"
                                         className="w-full p-2 rounded border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900"
                                         placeholder="e.g. ClawnchBot"
                                         value={formData.name}
-                                        onChange={e => setFormData({...formData, name: e.target.value})}
+                                        onChange={e => setFormData({ ...formData, name: e.target.value })}
                                     />
                                 </div>
 
                                 {formData.type === "token" && (
                                     <div>
                                         <label className="block text-sm font-medium mb-1">Ticker</label>
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             className="w-full p-2 rounded border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900"
                                             placeholder="e.g. CLWN"
                                             value={formData.ticker}
-                                            onChange={e => setFormData({...formData, ticker: e.target.value})}
+                                            onChange={e => setFormData({ ...formData, ticker: e.target.value })}
                                         />
                                     </div>
                                 )}
 
                                 <div>
                                     <label className="block text-sm font-medium mb-1">Contract Address (Optional)</label>
-                                    <input 
-                                        type="text" 
+                                    <input
+                                        type="text"
                                         className="w-full p-2 rounded border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 font-mono text-xs"
                                         placeholder="0x..."
                                         value={formData.contract_address}
-                                        onChange={e => setFormData({...formData, contract_address: e.target.value})}
+                                        onChange={e => setFormData({ ...formData, contract_address: e.target.value })}
                                     />
                                 </div>
 
                                 <div>
                                     <label className="block text-sm font-medium mb-1">Description</label>
-                                    <textarea 
+                                    <textarea
                                         className="w-full p-2 rounded border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 h-24"
                                         placeholder="What is your purpose?"
                                         value={formData.description}
-                                        onChange={e => setFormData({...formData, description: e.target.value})}
+                                        onChange={e => setFormData({ ...formData, description: e.target.value })}
                                     />
                                 </div>
 
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-sm font-medium mb-1">Twitter</label>
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             className="w-full p-2 rounded border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900"
                                             placeholder="@handle"
                                             value={formData.twitter}
-                                            onChange={e => setFormData({...formData, twitter: e.target.value})}
+                                            onChange={e => setFormData({ ...formData, twitter: e.target.value })}
                                         />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-medium mb-1">Website</label>
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             className="w-full p-2 rounded border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900"
                                             placeholder="https://..."
                                             value={formData.website}
-                                            onChange={e => setFormData({...formData, website: e.target.value})}
+                                            onChange={e => setFormData({ ...formData, website: e.target.value })}
                                         />
                                     </div>
                                 </div>
 
                                 <div>
                                     <label className="block text-sm font-medium mb-1">Tags (comma separated)</label>
-                                    <input 
-                                        type="text" 
+                                    <input
+                                        type="text"
                                         className="w-full p-2 rounded border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900"
                                         placeholder="defi, ai, tool"
                                         value={formData.tags}
-                                        onChange={e => setFormData({...formData, tags: e.target.value})}
+                                        onChange={e => setFormData({ ...formData, tags: e.target.value })}
                                     />
                                 </div>
                             </div>
@@ -164,7 +164,7 @@ export default function AgentSubmissionPage() {
                                 <pre className="bg-zinc-900 text-zinc-50 p-6 rounded-xl overflow-x-auto text-sm font-mono border border-zinc-800 shadow-2xl">
                                     {generateJSON()}
                                 </pre>
-                                <button 
+                                <button
                                     onClick={handleCopy}
                                     className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-white"
                                 >
@@ -180,8 +180,8 @@ export default function AgentSubmissionPage() {
                                     <li>Submit it to <code className="font-mono">content/registry/</code> in the repo.</li>
                                 </ol>
                                 <div className="mt-4">
-                                    <Link 
-                                        href="https://github.com/argostroloji/ClawnchPedia/new/main/content/registry" 
+                                    <Link
+                                        href="https://github.com/argostroloji/ClawnchPedia/new/main/content/registry"
                                         target="_blank"
                                         className="inline-flex items-center gap-2 px-4 py-2 bg-zinc-900 dark:bg-white text-white dark:text-black rounded-md font-bold text-sm hover:opacity-90 transition-opacity"
                                     >
@@ -196,4 +196,4 @@ export default function AgentSubmissionPage() {
         </div>
     );
 }
-```
+
