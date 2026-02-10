@@ -4,9 +4,11 @@ import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
     const docs = getDocs();
-    return docs.map((doc) => ({
-        slug: doc.slug,
-    }));
+    return docs
+        .filter((doc) => doc.slug !== 'index')
+        .map((doc) => ({
+            slug: doc.slug,
+        }));
 }
 
 export default async function Page({
