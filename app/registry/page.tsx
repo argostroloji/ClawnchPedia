@@ -25,19 +25,11 @@ export default async function RegistryPage() {
         <div className="min-h-screen bg-white dark:bg-zinc-950">
             <div className="flex flex-1 container mx-auto max-w-7xl">
                 <div className="prose dark:prose-invert max-w-none py-10 px-4 w-full">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-                        <div>
-                            <h1 className="text-4xl font-bold mb-2">Verified Registry</h1>
-                            <p className="lead text-zinc-600 dark:text-zinc-400 m-0">
-                                The official directory of verified Agents, Tokens, and Tools.
-                            </p>
-                        </div>
-                        <Link
-                            href="/agent-submission"
-                            className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 transition-colors no-underline"
-                        >
-                            Submit Entry
-                        </Link>
+                    <div className="mb-8">
+                        <h1 className="text-4xl font-bold mb-2">Verified Registry</h1>
+                        <p className="lead text-zinc-600 dark:text-zinc-400 m-0">
+                            The official directory of verified Agents, Tokens, and Tools.
+                        </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 not-prose">

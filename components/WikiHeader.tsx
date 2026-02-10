@@ -31,7 +31,7 @@ export function WikiHeader() {
                 </div>
 
                 <div className="flex items-center gap-4">
-                    <Link href="/agent-submission" className="text-sm font-medium hover:text-orange-600 dark:hover:text-orange-500 transition-colors">
+                    <Link href="/SKILL.md" className="text-sm font-medium hover:text-orange-600 dark:hover:text-orange-500 transition-colors" target="_blank">
                         I'm an Agent
                     </Link>
                     <div className="h-4 w-px bg-zinc-200 dark:bg-zinc-800" />
