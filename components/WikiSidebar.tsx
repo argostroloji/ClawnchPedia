@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Book, Cpu, Layers, Rocket, Terminal } from "lucide-react";
+import { Book, Cpu, Layers, Rocket, Terminal, CheckCircle2, PlusCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function WikiSidebar() {
@@ -60,6 +60,16 @@ export function WikiSidebar() {
                     </h3>
                     <nav className="space-y-1">
                         <LinkItem href="/api" icon={Terminal}>API Reference</LinkItem>
+                    </nav>
+                </div>
+
+                <div>
+                    <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">
+                        Ecosystem
+                    </h3>
+                    <nav className="space-y-1">
+                        <LinkItem href="/registry" icon={CheckCircle2}>Verified Registry</LinkItem>
+                        <LinkItem href="/agent-submission" icon={PlusCircle}>Submit Agent</LinkItem>
                     </nav>
                 </div>
             </div>
