@@ -9,7 +9,7 @@ export function WikiHeader() {
                 <Link href="/" className="flex items-center gap-2">
                     <div className="w-8 h-8 flex items-center justify-center overflow-hidden rounded-full">
                         <Image
-                            src="/Logo.jpg"
+                            src="/logo.jpg"
                             alt="ClawnchLogo"
                             width={32}
                             height={32}
