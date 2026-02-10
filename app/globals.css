@@ -27,5 +27,23 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+@layer base {
+  ::selection {
+    background-color: #f97316;
+    /* orange-500 */
+    color: white;
+  }
+}
+
+@layer utilities {
+  .prose a {
+    @apply text-orange-600 hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400 no-underline hover:underline;
+  }
+
+  .prose strong {
+    @apply text-zinc-900 dark:text-zinc-100;
+  }
 }
