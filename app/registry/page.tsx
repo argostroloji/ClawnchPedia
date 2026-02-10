@@ -14,6 +14,7 @@ export default async function RegistryPage() {
     const { data: entries, error } = await supabase
         .from('registry')
         .select('*')
+        .eq('status', 'verified')
         .order('created_at', { ascending: false });
 
     if (error) {

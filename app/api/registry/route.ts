@@ -10,6 +10,7 @@ export async function GET() {
     const { data, error } = await supabase
         .from("registry")
         .select("*")
+        .eq("status", "verified")
         .order("created_at", { ascending: false });
 
     if (error) {
@@ -39,10 +40,6 @@ export async function POST(request: Request) {
                     name,
                     type,
                     description,
-                    socials, // Stored as JSONB or text, depending on schema. Our schema uses separate cols for twitter/web but we might want to adjust logic to match query.
-                    // Wait, the schema I proposed has twitter, website, telegram as separate columns.
-                    // Yet the submitted JSON often has them nested in 'socials'.
-                    // I should map them correctly here.
                     twitter: socials?.twitter,
                     website: socials?.website,
                     telegram: socials?.telegram,
