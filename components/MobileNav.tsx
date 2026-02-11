@@ -43,7 +43,7 @@ export function MobileNav() {
             </button>
 
             {isOpen && (
-                <div className="fixed inset-0 top-16 z-50 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 overflow-y-auto p-4 animate-in slide-in-from-top-2 duration-200">
+                <div className="fixed inset-x-0 top-16 bottom-0 z-[100] bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 overflow-y-auto p-4">
                     <div className="space-y-6 pb-20">
                         {/* Identical structure to WikiSidebar */}
                         <div>
