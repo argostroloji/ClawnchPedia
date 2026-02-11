@@ -59,7 +59,7 @@ export function WikiSidebar() {
                         Reference
                     </h3>
                     <nav className="space-y-1">
-                        <LinkItem href="/api" icon={Terminal}>API Reference</LinkItem>
+                        <LinkItem href="/api-docs" icon={Terminal}>API Reference</LinkItem>
                     </nav>
                 </div>
 
