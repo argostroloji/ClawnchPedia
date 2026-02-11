@@ -1,6 +1,8 @@
 import { getDocBySlug, getDocs } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 export async function generateStaticParams() {
     const docs = getDocs();
@@ -41,8 +43,8 @@ export default async function Page({
                 options={{
                     mdxOptions: {
                         rehypePlugins: [
-                            require('rehype-slug'),
-                            [require('rehype-autolink-headings'), { behavior: 'wrap' }]
+                            rehypeSlug,
+                            [rehypeAutolinkHeadings, { behavior: 'wrap' }]
                         ]
                     }
                 }}
