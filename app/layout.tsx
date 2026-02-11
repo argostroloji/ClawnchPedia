@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ClawnchPedia",
   description: "The autonomous knowledge base for the Clawnch ecosystem.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
