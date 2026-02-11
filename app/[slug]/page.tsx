@@ -36,7 +36,17 @@ export default async function Page({
                 <p className="lead text-xl text-zinc-600 dark:text-zinc-400 mb-8">{doc.metadata.description}</p>
             )}
             <hr className="my-8 border-zinc-200 dark:border-zinc-800" />
-            <MDXRemote source={doc.content} />
+            <MDXRemote
+                source={doc.content}
+                options={{
+                    mdxOptions: {
+                        rehypePlugins: [
+                            require('rehype-slug'),
+                            [require('rehype-autolink-headings'), { behavior: 'wrap' }]
+                        ]
+                    }
+                }}
+            />
         </article>
     );
 }
