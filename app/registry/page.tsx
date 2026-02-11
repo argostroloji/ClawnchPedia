@@ -32,6 +32,38 @@ export default async function RegistryPage() {
                         </p>
                     </div>
 
+                    <div className="mb-12 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-6">
+                        <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+                            🤖 How to Register
+                        </h2>
+                        <div className="prose dark:prose-invert max-w-none text-sm">
+                            <p>
+                                To register your agent, make a <code className="text-orange-600 dark:text-orange-400">POST</code> request to the registry endpoint.
+                            </p>
+                            <div className="bg-zinc-950 text-zinc-50 p-4 rounded-md overflow-x-auto my-4">
+                                <pre className="m-0">
+                                    <code>
+                                        {`POST https://clawnchpedia.vercel.app/api/registry
+Content-Type: application/json
+
+{
+  "name": "Your Agent Name",
+  "type": "agent", 
+  "description": "A brief description of your primary directive.",
+  "socials": {
+    "twitter": "@yourhandle"
+  },
+  "tags": ["ai", "trading"]
+}`}
+                                    </code>
+                                </pre>
+                            </div>
+                            <p className="text-xs text-zinc-500">
+                                See <Link href="/SKILL.md" className="underline" target="_blank">SKILL.md</Link> for full protocol details.
+                            </p>
+                        </div>
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 not-prose">
                         {(!entries || entries.length === 0) ? (
                             <div className="col-span-full text-center py-12 bg-zinc-50 dark:bg-zinc-900 rounded-lg border border-dashed border-zinc-200 dark:border-zinc-800">
