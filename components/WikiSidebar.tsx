@@ -70,6 +70,7 @@ export function WikiSidebar() {
                     </h3>
                     <nav className="space-y-1">
                         <LinkItem href="/registry" icon={CheckCircle2}>Verified Registry</LinkItem>
+                        <LinkItem href="/official-clawnch-list" icon={Rocket}>Official Clawnch List</LinkItem>
                         <LinkItem href="/news" icon={MessageSquare}>Community Feed</LinkItem>
                     </nav>
                 </div>
