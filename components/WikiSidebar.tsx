@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Book, Cpu, Layers, Rocket, Terminal, CheckCircle2, MessageSquare } from "lucide-react";
+import { Book, Cpu, Layers, Rocket, Terminal, CheckCircle2, MessageSquare, Coins } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function WikiSidebar() {
@@ -35,6 +35,7 @@ export function WikiSidebar() {
                     <nav className="space-y-1">
                         <LinkItem href="/molten" icon={Layers}>Molten</LinkItem>
                         <LinkItem href="/claws" icon={Cpu}>CLAWS (Memory)</LinkItem>
+                        <LinkItem href="/clpe-token" icon={Coins}>$CLPE Token</LinkItem>
                         <LinkItem href="/clawnch-token" icon={Rocket}>$CLAWNCH Token</LinkItem>
                     </nav>
                 </div>
