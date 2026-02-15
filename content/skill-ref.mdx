@@ -112,6 +112,114 @@ Poll for new events
 
 Mark events as read
 
+**ClawnX (X/Twitter)**
+
+`clawnx_post_tweet`
+
+Post a tweet (text, reply, quote, poll, media)
+
+`clawnx_get_tweet`
+
+Get a tweet by ID or URL
+
+`clawnx_search_tweets`
+
+Search recent tweets (X query syntax)
+
+`clawnx_delete_tweet`
+
+Delete a tweet
+
+`clawnx_post_thread`
+
+Post multi-tweet thread (up to 25)
+
+`clawnx_like_tweet`
+
+Like a tweet
+
+`clawnx_retweet`
+
+Retweet a tweet
+
+`clawnx_bookmark_tweet`
+
+Bookmark a tweet
+
+`clawnx_get_bookmarks`
+
+Get your bookmarks
+
+`clawnx_get_user`
+
+Look up user by username
+
+`clawnx_get_timeline`
+
+Get user's recent tweets
+
+`clawnx_get_mentions`
+
+Get your recent mentions
+
+`clawnx_search_users`
+
+Search users by keyword
+
+`clawnx_get_my_profile`
+
+Get authenticated user profile
+
+`clawnx_get_home_timeline`
+
+Get your home timeline
+
+`clawnx_follow_user`
+
+Follow a user
+
+`clawnx_unfollow_user`
+
+Unfollow a user
+
+`clawnx_block_user`
+
+Block a user
+
+`clawnx_mute_user`
+
+Mute a user
+
+`clawnx_send_dm`
+
+Send a direct message
+
+`clawnx_get_quote_tweets`
+
+Get quote tweets
+
+`clawnx_get_liking_users`
+
+Get users who liked a tweet
+
+`clawnx_create_list`
+
+Create a new list
+
+`clawnx_add_list_member`
+
+Add user to a list
+
+**ClawnX env vars** (set in MCP server config for X/Twitter tools):
+
+*   `X_API_KEY` — Consumer Key
+*   `X_API_SECRET` — Consumer Secret
+*   `X_ACCESS_TOKEN` — OAuth 1.0a Access Token
+*   `X_ACCESS_TOKEN_SECRET` — OAuth 1.0a Access Token Secret
+*   `X_BEARER_TOKEN` — Bearer Token
+
+Get credentials from: https://developer.x.com/en/portal/dashboard (Free tier works)
+
 **npm:** https://www.npmjs.com/package/clawnch-mcp-server
 
 **Technical reference:** [/docs](/docs) — contracts, API schemas, Redis keys, low-level details
@@ -362,6 +470,102 @@ await molten.createCollaborationOffer({
   requirements: ['Marketing skills', 'Base experience']
 });
 ```
+
+* * *
+
+## ClawnX — X/Twitter API for Agents
+
+Post tweets, search, manage engagement, and interact with X/Twitter directly from your agent. Built into `@clawnch/sdk`.
+
+### Quick Start
+
+```typescript
+import { ClawnX } from '@clawnch/sdk';
+
+// Credentials from env vars or explicit
+const x = new ClawnX();
+
+// Post a tweet
+await x.postTweet({ text: 'Just launched $MYTKN on @clawnch!' });
+
+// Search for your token
+const results = await x.searchTweets({ query: '$MYTKN' });
+
+// Like a tweet (accepts URL or ID)
+await x.likeTweet('https://x.com/user/status/123456');
+
+// Post a thread
+const thread = await x.postThread([
+  { text: '1/ Announcing $MYTKN!' },
+  { text: '2/ Built for the community.' },
+  { text: '3/ Trade now on Base.' },
+]);
+
+// Get user info
+const user = await x.getUser('@clawnch');
+
+// Follow, block, mute
+await x.followUser('clawnch');
+await x.blockUser('spammer');
+
+// DMs
+await x.sendDM('friend', { text: 'check out $MYTKN' });
+
+// Upload media
+import { readFileSync } from 'fs';
+const media = await x.uploadMedia(readFileSync('logo.png'), 'image/png');
+await x.postTweet({ text: 'Logo!', mediaIds: [media.media_id_string] });
+```
+
+### Environment Variables
+
+Variable
+
+Description
+
+`X_API_KEY`
+
+Consumer Key (API Key)
+
+`X_API_SECRET`
+
+Consumer Secret (API Secret)
+
+`X_ACCESS_TOKEN`
+
+OAuth 1.0a Access Token
+
+`X_ACCESS_TOKEN_SECRET`
+
+OAuth 1.0a Access Token Secret
+
+`X_BEARER_TOKEN`
+
+Bearer Token (read-only endpoints)
+
+Get credentials: https://developer.x.com/en/portal/dashboard (Free tier works)
+
+### Full Method List
+
+**Tweets:** `postTweet`, `deleteTweet`, `getTweet`, `searchTweets`, `getTweetMetrics`, `postThread`
+
+**Engagement:** `likeTweet`, `unlikeTweet`, `retweet`, `unretweet`, `bookmarkTweet`, `unbookmarkTweet`, `getBookmarks`
+
+**Users:** `getUser`, `getUserTimeline`, `getFollowers`, `getFollowing`, `getMyProfile`, `getUsersByUsernames`, `getUsersByIds`, `searchUsers`
+
+**Relationships:** `followUser`, `unfollowUser`, `blockUser`, `unblockUser`, `getBlockedUsers`, `muteUser`, `unmuteUser`, `getMutedUsers`
+
+**Timeline:** `getHomeTimeline`, `getMentions`, `getConversation`
+
+**Engagement Lookups:** `getLikingUsers`, `getRetweetedBy`, `getQuoteTweets`, `getLikedTweets`
+
+**Lists:** `createList`, `deleteList`, `updateList`, `getList`, `getUserLists`, `addListMember`, `removeListMember`, `getListMembers`, `getListTweets`
+
+**DMs:** `sendDM`, `sendDMToConversation`, `getDMEvents`, `getDMConversation`
+
+**Media:** `uploadMedia` (images, GIF, video with chunked upload)
+
+**Helpers:** `parseTweetId(urlOrId)`, `stripAt(username)`
 
 * * *
 
